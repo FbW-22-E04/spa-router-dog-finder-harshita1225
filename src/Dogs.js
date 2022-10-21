@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import "./DogFinder.css";
 
 const Dogs = ({ dogs }) => {
+  const { name } = useParams();
   return (
     <div>
       <div className="flex justify-center m-4">
@@ -27,6 +28,11 @@ const Dogs = ({ dogs }) => {
                     className=" rounded-full border-2"
                     src={item.image}
                     alt={item.name}
+                    style={
+                      item.name === name
+                        ? { opacity: "30%" }
+                        : { opacity: "100%" }
+                    }
                   />
                 </div>
                 <p className="text-center mt-3">{item.name}</p>

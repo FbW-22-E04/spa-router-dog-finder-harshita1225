@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SingleDog from "./SingleDog";
 import Dogs from "./Dogs";
-
+import { useState } from "react";
 import whiskeyPic from "./images/whiskey.jpg";
 import hazelPic from "./images/hazel.jpg";
 import tubbyPic from "./images/tubby.jpg";
@@ -41,11 +41,16 @@ const dogs = [
   },
 ];
 function DogFinder() {
+  const [imgArr, setImgArr] = useState();
   return (
     <BrowserRouter>
-      <Dogs dogs={dogs} />
       <Routes>
-        <Route path="/dogs/:name" element={<SingleDog dogs={dogs} />} />
+        <Route
+          path="/dogs/:name"
+          element={
+            <SingleDog imgArr={imgArr} setImgArr={setImgArr} dogs={dogs} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
